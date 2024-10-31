@@ -1,11 +1,11 @@
-// src/main.rs
 use actix_web::{get, web, App, HttpServer, Responder, HttpResponse};
 use serde::Serialize;
 use sqlx::postgres::PgPoolOptions;
 use std::env;
 use dotenv::dotenv;
-use sqlx::PgPool; // Added import for PgPool
+use sqlx::PgPool;
 
+// Define a struct for JSON responses
 #[derive(Serialize)]
 struct ApiResponse {
     message: String,
@@ -26,6 +26,7 @@ async fn json_response() -> impl Responder {
     HttpResponse::Ok().json(response)
 }
 
+// Database example endpoint
 #[get("/db_example")]
 async fn db_example(pool: web::Data<PgPool>) -> impl Responder {
     // Run the query, expecting a result with an integer column labeled "value"
