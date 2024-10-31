@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/json") // This will now correctly proxy to http://localhost:8000/json
+    fetch("/json")
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
